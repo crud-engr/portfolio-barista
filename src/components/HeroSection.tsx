@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowDown, Github, Linkedin, Mail, Twitter } from 'lucide-react';
-import profilePhoto from '@/assets/portfolio-img.png';
+import { ArrowDown, Instagram, Facebook, Mail, MessageCircle } from 'lucide-react';
 
 const HeroSection = () => {
   return (
@@ -14,14 +13,14 @@ const HeroSection = () => {
       {/* Floating shapes */}
       <div className='absolute inset-0 overflow-hidden pointer-events-none'>
         <motion.div
-          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          className='absolute top-1/4 left-[10%] w-64 h-64 rounded-full bg-primary/5 blur-3xl'
+          animate={{ x: [0, 24, 0], y: [0, -30, 0] }}
+          transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
+          className='absolute top-1/4 left-[8%] w-64 h-64 rounded-full bg-primary/10 blur-3xl'
         />
         <motion.div
-          animate={{ y: [0, 20, 0], rotate: [0, -5, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          className='absolute bottom-1/4 right-[10%] w-80 h-80 rounded-full bg-primary/5 blur-3xl'
+          animate={{ x: [0, -20, 0], y: [0, 26, 0] }}
+          transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut' }}
+          className='absolute bottom-1/4 right-[8%] w-80 h-80 rounded-full bg-accent/10 blur-3xl'
         />
       </div>
 
@@ -29,30 +28,29 @@ const HeroSection = () => {
         <div className='flex flex-col lg:flex-row items-center gap-12 lg:gap-16'>
           {/* Text */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            initial={{ opacity: 0, y: 24, filter: 'blur(6px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className='flex-1 text-center lg:text-left'
           >
             <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4 }}
               className='inline-block px-4 py-1.5 rounded-full text-xs font-medium tracking-wider uppercase bg-primary/10 text-primary border border-primary/20 mb-6'
             >
-              Senior Software Developer
+              Professional Barista
             </motion.span>
 
             <h1 className='text-3xl min-[480px]:text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-heading font-bold leading-tight'>
-              Hi, I'm <span className='gradient-text'>Abeeb</span>
+              Hi, I'm <span className='gradient-text'>Kushimo</span>
               <br />
-              <span className='gradient-text'>Ayinla</span>
+              <span className='gradient-text'>Olamilekan</span>
             </h1>
 
             <p className='mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 leading-relaxed px-1'>
-              I craft scalable, performant web applications with clean architecture, solid system
-              design, and pixel-perfect interfaces. Security-conscious and turning complex problems
-              into elegant solutions.
+              I craft specialty coffee experiences — precision espresso, silky latte art, and warm
+              hospitality — turning every cup into a small ritual worth savoring.
             </p>
 
             <div className='mt-6 sm:mt-8 flex flex-wrap items-center gap-3 justify-center lg:justify-start'>
@@ -68,20 +66,19 @@ const HeroSection = () => {
                 Get In Touch
               </a>
               <a
-                href='#projects'
+                href='#creations'
                 onClick={(e) => {
                   e.preventDefault();
-                  document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' });
+                  document.querySelector('#creations')?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className='inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] rounded-xl font-medium text-sm border border-border text-foreground hover:bg-secondary transition-all active:scale-[0.98]'
               >
-                View Work
+                View Creations
               </a>
               <a
-                href='https://docs.google.com/document/d/1zsOgBbSK0Q6Gm1VoTKT7dyuaUz6k5G8S6j9xzWYmzgY/edit?usp=sharing'
-                target='_blank'
-                rel='noopener noreferrer'
+                href='#'
                 className='inline-flex items-center justify-center gap-2 px-5 py-3 min-h-[44px] rounded-xl font-medium text-sm bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all active:scale-[0.98]'
+                title='Placeholder — link to a résumé/CV file'
               >
                 <ArrowDown size={16} />
                 Resume
@@ -90,14 +87,10 @@ const HeroSection = () => {
 
             <div className='mt-6 sm:mt-8 flex items-center gap-3 sm:gap-4 justify-center lg:justify-start'>
               {[
-                { icon: Github, href: 'https://github.com/crud-engr', label: 'GitHub' },
-                {
-                  icon: Linkedin,
-                  href: 'https://www.linkedin.com/in/olamilekan-a-b63b3315a/',
-                  label: 'LinkedIn',
-                },
-                { icon: Twitter, href: 'https://x.com/crud_engr', label: 'Twitter' },
-                { icon: Mail, href: 'mailto:abeebayinla@gmail.com', label: 'Email' },
+                { icon: Instagram, href: '#', label: 'Instagram' },
+                { icon: Facebook, href: '#', label: 'Facebook' },
+                { icon: MessageCircle, href: '#', label: 'WhatsApp' },
+                { icon: Mail, href: 'mailto:Olamilekankushimo1@gmail.com', label: 'Email' },
               ].map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
@@ -113,74 +106,94 @@ const HeroSection = () => {
             </div>
           </motion.div>
 
-          {/* Profile photo with animated ring */}
+          {/* Coffee cup illustration */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            initial={{ opacity: 0, scale: 0.85, rotate: -4 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className='relative flex-shrink-0 w-full max-w-[16rem] min-[480px]:max-w-[18rem] sm:max-w-[20rem] lg:max-w-[24rem] mx-auto lg:mx-0'
           >
-            {/* Animated ring */}
             <div className='relative w-full aspect-square max-w-[16rem] min-[480px]:max-w-[18rem] sm:max-w-[20rem] lg:max-w-[24rem]'>
+              {/* Rotating badge text ring */}
               <svg
-                className='absolute inset-0 w-full h-full animate-ring-spin'
+                className='absolute inset-0 w-full h-full animate-spin-slow'
                 viewBox='0 0 200 200'
               >
                 <defs>
-                  <linearGradient id='ringGradient' x1='0%' y1='0%' x2='100%' y2='100%'>
-                    <stop offset='0%' stopColor='hsl(174 62% 50%)' />
-                    <stop offset='50%' stopColor='hsl(190 70% 55%)' />
-                    <stop offset='100%' stopColor='hsl(174 62% 40%)' />
+                  <path
+                    id='badgeCircle'
+                    d='M 100,100 m -84,0 a 84,84 0 1,1 168,0 a 84,84 0 1,1 -168,0'
+                  />
+                </defs>
+                <text
+                  fontSize='8.5'
+                  letterSpacing='2.5'
+                  fill='hsl(var(--primary) / 0.75)'
+                  className='font-heading font-medium'
+                >
+                  <textPath href='#badgeCircle'>
+                    SPECIALTY COFFEE • LATTE ART • HAND CRAFTED • SPECIALTY COFFEE • LATTE ART •
+                    HAND CRAFTED •
+                  </textPath>
+                </text>
+              </svg>
+
+              {/* Dashed accent ring, opposite direction */}
+              <svg
+                className='absolute inset-0 w-full h-full animate-spin-slow-reverse'
+                viewBox='0 0 200 200'
+              >
+                <circle
+                  cx='100'
+                  cy='100'
+                  r='70'
+                  fill='none'
+                  stroke='hsl(var(--accent) / 0.25)'
+                  strokeWidth='1.5'
+                  strokeDasharray='4 8'
+                  strokeLinecap='round'
+                />
+              </svg>
+
+              {/* Steam wisps */}
+              <div className='absolute left-1/2 -translate-x-1/2 top-[16%] flex gap-3'>
+                {[0, 0.5, 1].map((delay, i) => (
+                  <span
+                    key={i}
+                    className='block h-6 w-2 rounded-full animate-steam'
+                    style={{
+                      background: 'hsl(var(--muted-foreground) / 0.5)',
+                      animationDelay: `${delay}s`,
+                      marginTop: i === 1 ? '-6px' : 0,
+                    }}
+                  />
+                ))}
+              </div>
+
+              {/* Cup */}
+              <svg className='absolute inset-0 w-full h-full' viewBox='0 0 200 200'>
+                <defs>
+                  <linearGradient id='cupGradient' x1='0%' y1='0%' x2='100%' y2='100%'>
+                    <stop offset='0%' stopColor='hsl(24 72% 45%)' />
+                    <stop offset='100%' stopColor='hsl(38 90% 55%)' />
                   </linearGradient>
                 </defs>
-                <circle
-                  cx='100'
-                  cy='100'
-                  r='96'
+                <ellipse cx='100' cy='158' rx='52' ry='9' fill='hsl(var(--secondary))' />
+                <path
+                  d='M62 84 h76 l-7 58 a9 9 0 0 1 -9 8 H78 a9 9 0 0 1 -9 -8 Z'
+                  fill='hsl(var(--card))'
+                  stroke='url(#cupGradient)'
+                  strokeWidth='3'
+                />
+                <path
+                  d='M136 94 q26 4 22 26 q-4 20 -24 18'
                   fill='none'
-                  stroke='url(#ringGradient)'
-                  strokeWidth='2'
-                  strokeDasharray='120 40 60 40'
+                  stroke='url(#cupGradient)'
+                  strokeWidth='7'
                   strokeLinecap='round'
                 />
+                <ellipse cx='100' cy='86' rx='37' ry='6.5' fill='url(#cupGradient)' />
               </svg>
-
-              {/* Second ring spinning opposite */}
-              <svg
-                className='absolute inset-0 w-full h-full'
-                viewBox='0 0 200 200'
-                style={{ animation: 'ring-spin 6s linear infinite reverse' }}
-              >
-                <circle
-                  cx='100'
-                  cy='100'
-                  r='90'
-                  fill='none'
-                  stroke='hsl(var(--primary) / 0.15)'
-                  strokeWidth='1'
-                  strokeDasharray='30 70'
-                  strokeLinecap='round'
-                />
-              </svg>
-
-              {/* Glowing dots on ring */}
-              <svg
-                className='absolute inset-0 w-full h-full animate-ring-spin'
-                viewBox='0 0 200 200'
-              >
-                <circle cx='100' cy='4' r='3' fill='hsl(174 62% 50%)' opacity='0.8' />
-                <circle cx='196' cy='100' r='2' fill='hsl(190 70% 55%)' opacity='0.6' />
-              </svg>
-
-              {/* Photo */}
-              <div className='absolute inset-[15%] sm:inset-5 lg:inset-6 rounded-full overflow-hidden'>
-                <img
-                  src={profilePhoto}
-                  alt='Abeeb Ayinla — Senior Software Developer'
-                  className='w-full h-full object-cover'
-                  loading='eager'
-                />
-              </div>
             </div>
           </motion.div>
         </div>
@@ -189,7 +202,7 @@ const HeroSection = () => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
+          transition={{ delay: 1.4 }}
           className='absolute left-1/2 -translate-x-1/2'
           style={{ bottom: 'max(2rem, env(safe-area-inset-bottom))' }}
         >

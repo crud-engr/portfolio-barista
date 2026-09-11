@@ -1,37 +1,25 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ExternalLink } from "lucide-react";
+import { Coffee } from "lucide-react";
 
-const projects = [
-  // {
-  //   title: "E-Commerce Platform",
-  //   description: "A full-stack e-commerce platform with real-time inventory, payment processing, and an admin dashboard.",
-  //   tech: ["Next.js", "TypeScript", "PostgreSQL", "Stripe"],
-  //   // github: "#",
-  //   live: "#",
-  // },
+const creations = [
   {
-    title: "Task Manager",
-    description: "Collaborative project management tool with drag-and-drop boards, real-time updates, and team analytics.",
-    tech: ["React", "Node.js", "MongoDB"],
-    // github: "#",
-    live: "https://kanban-board-crud.vercel.app",
+    title: "Caramel Rosetta Latte",
+    description:
+      "A balanced double-shot espresso layered with steamed milk and house caramel, finished with a hand-poured rosetta.",
+    tags: ["Espresso", "Latte Art", "Signature"],
   },
   {
-    title: "Pepcode",
+    title: "Cascara Cold Brew",
     description:
-      "Accounting software that allows customers to record sales and purchase transactions, plus invoices, goods, and orders. I engineered the backend system.",
-    tech: ["Node", "NestJS", "MongoDB", "Mongoose"],
-    // github: "#",
-    live: "https://pepcodeinc.com/",
+      "Slow cold-steeped single-origin beans infused with cascara (coffee cherry tea) for a fruit-forward, low-acid sipper.",
+    tags: ["Cold Brew", "Single Origin", "Seasonal"],
   },
   {
-    title: "Linqx",
+    title: "Affogato Reserve",
     description:
-      "A marketplace that connects customers to vendors to satisfy their job needs. Vendors showcase their talent to win jobs from customers. I built the full-stack application.",
-    tech: ["Node", "React", "MongoDB", "Mongoose", "Paystack"],
-    // github: "#",
-    live: "https://www.linqx.app/",
+      "A scoop of vanilla gelato drowned in a hot single-origin espresso shot — simple, bold, and unforgettable.",
+    tags: ["Espresso", "Dessert", "Classic"],
   },
 ];
 
@@ -40,7 +28,7 @@ const ProjectsSection = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="projects" className="py-24 sm:py-32">
+    <section id="creations" className="py-24 sm:py-32">
       <div className="section-container" ref={ref}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -50,42 +38,56 @@ const ProjectsSection = () => {
         >
           <span className="text-xs tracking-[0.3em] uppercase text-primary font-medium">Portfolio</span>
           <h2 className="mt-3 text-3xl sm:text-4xl font-heading font-bold">
-            Featured <span className="gradient-text">Projects</span>
+            Signature <span className="gradient-text">Creations</span>
           </h2>
+          <p className="mt-3 text-sm text-muted-foreground">Hover a card to see the tasting notes</p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-          {projects.map((project, i) => (
-            <motion.article
-              key={project.title}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {creations.map((item, i) => (
+            <motion.div
+              key={item.title}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
-              className="glass rounded-2xl p-6 sm:p-8 group hover:shadow-xl hover:shadow-primary/5 transition-all duration-300"
+              transition={{ delay: 0.2 + i * 0.12, duration: 0.5 }}
+              className="group [perspective:1200px] h-64"
             >
-              <div className="flex items-start justify-between gap-2 mb-4 min-w-0">
-                <h3 className="text-lg sm:text-xl font-heading font-semibold group-hover:text-primary transition-colors break-words min-w-0">
-                  {project.title}
-                </h3>
-                <div className="flex items-center gap-2">
-                  <a href={project.live} aria-label="Live demo" target="_blank" rel="noopener noreferrer" className="p-1.5 rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all">
-                    <ExternalLink size={16} />
-                  </a>
+              <div className="relative w-full h-full transition-transform duration-700 preserve-3d group-hover:[transform:rotateY(180deg)]">
+                {/* Front */}
+                <div
+                  className="absolute inset-0 rounded-2xl p-6 sm:p-7 flex flex-col items-center justify-center text-center backface-hidden glass"
+                  style={{ boxShadow: "inset 0 1px 0 0 hsl(0 0% 100% / 0.06)" }}
+                >
+                  <div
+                    className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4"
+                    style={{ background: "var(--gradient-primary)" }}
+                  >
+                    <Coffee size={26} color="hsl(var(--primary-foreground))" />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-heading font-semibold">{item.title}</h3>
+                  <div className="mt-4 flex flex-wrap justify-center gap-2">
+                    {item.tags.map((t) => (
+                      <span key={t} className="px-2.5 py-1 rounded-lg text-xs font-medium bg-primary/10 text-primary">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Back */}
+                <div
+                  className="absolute inset-0 rounded-2xl p-6 sm:p-7 flex flex-col justify-center backface-hidden [transform:rotateY(180deg)]"
+                  style={{ background: "var(--gradient-primary)" }}
+                >
+                  <h3 className="text-base sm:text-lg font-heading font-semibold mb-2" style={{ color: "hsl(var(--primary-foreground))" }}>
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "hsl(var(--primary-foreground) / 0.9)" }}>
+                    {item.description}
+                  </p>
                 </div>
               </div>
-
-              <p className="text-muted-foreground text-sm leading-relaxed mb-5">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((t) => (
-                  <span key={t} className="px-2.5 py-1 rounded-lg text-xs font-medium bg-primary/10 text-primary">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </motion.article>
+            </motion.div>
           ))}
         </div>
       </div>

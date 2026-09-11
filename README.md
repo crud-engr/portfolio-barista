@@ -1,6 +1,6 @@
-# Portfolio Website
+# Kushimo Olamilekan — Barista Portfolio
 
-A modern, single-page portfolio website built with React and Tailwind CSS.
+A modern, single-page portfolio website for Kushimo Quadri Olamilekan, Professional Barista. Built with React and Tailwind CSS.
 
 ## Features
 
@@ -72,4 +72,4 @@ portfolio/
 
 ## License
 
-© 2024 CRUD. All rights reserved.
+© 2026 Kushimo Quadri Olamilekan. All rights reserved.

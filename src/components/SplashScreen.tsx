@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Coffee } from "lucide-react";
 
 const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [show, setShow] = useState(true);
@@ -7,7 +8,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShow(false);
-      setTimeout(onComplete, 800);
+      setTimeout(onComplete, 700);
     }, 2400);
     return () => clearTimeout(timer);
   }, [onComplete]);
@@ -22,25 +23,46 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
             paddingLeft: "max(1.5rem, env(safe-area-inset-left))",
             paddingRight: "max(1.5rem, env(safe-area-inset-right))",
           }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          initial={{ clipPath: "circle(150% at 50% 100%)" }}
+          exit={{ clipPath: "circle(0% at 50% 100%)" }}
+          transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
         >
           <div className="text-center w-full max-w-sm">
-            <motion.div
-              initial={{ scale: 0, rotate: -180 }}
-              animate={{ scale: 1, rotate: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="mb-6"
-            >
-              <div className="w-20 h-20 mx-auto rounded-2xl flex items-center justify-center text-3xl font-heading font-bold"
-                style={{ 
-                  background: "var(--gradient-primary)",
-                  color: "hsl(var(--primary-foreground))"
-                }}
+            <div className="relative mb-6 mx-auto w-20 h-20">
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="w-20 h-20 mx-auto rounded-2xl flex items-center justify-center relative overflow-hidden"
+                style={{ background: "var(--gradient-primary)" }}
               >
-                AA
-              </div>
-            </motion.div>
+                <motion.div
+                  initial={{ y: "100%" }}
+                  animate={{ y: "0%" }}
+                  transition={{ delay: 0.3, duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
+                  className="absolute inset-0"
+                  style={{ background: "hsl(var(--splash-bg) / 0.25)" }}
+                />
+                <Coffee
+                  className="relative z-10"
+                  size={34}
+                  strokeWidth={2.25}
+                  color="hsl(var(--primary-foreground))"
+                />
+              </motion.div>
+
+              {[0, 0.35, 0.7].map((delay, i) => (
+                <span
+                  key={i}
+                  className="absolute -top-3 h-4 w-1.5 rounded-full animate-steam"
+                  style={{
+                    left: `${34 + i * 12}%`,
+                    background: "hsl(var(--splash-text) / 0.7)",
+                    animationDelay: `${delay}s`,
+                  }}
+                />
+              ))}
+            </div>
 
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -49,7 +71,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
               className="text-2xl sm:text-3xl font-heading font-semibold"
               style={{ color: "hsl(var(--splash-text))" }}
             >
-              Abeeb Ayinla Olamilekan
+              Kushimo Quadri Olamilekan
             </motion.h1>
 
             <motion.p
@@ -59,7 +81,7 @@ const SplashScreen = ({ onComplete }: { onComplete: () => void }) => {
               className="mt-2 text-sm tracking-[0.3em] uppercase"
               style={{ color: "hsl(var(--splash-text) / 0.6)" }}
             >
-              Senior Software Developer
+              Professional Barista
             </motion.p>
 
             <motion.div

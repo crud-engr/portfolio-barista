@@ -15,9 +15,10 @@ const ScrollToTop = () => {
     <AnimatePresence>
       {visible && (
         <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.6, rotate: -45 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          exit={{ opacity: 0, scale: 0.6, rotate: 45 }}
+          transition={{ type: "spring", stiffness: 350, damping: 22 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="fixed z-50 p-3 rounded-xl text-primary-foreground shadow-lg hover:scale-110 hover:shadow-xl hover:shadow-primary/25 transition-all min-h-[44px] min-w-[44px] flex items-center justify-center active:scale-95"
           style={{
