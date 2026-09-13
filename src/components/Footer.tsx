@@ -38,7 +38,15 @@ const Footer = () => {
             ))}
           </div>
           <p className='text-sm text-muted-foreground flex items-center justify-center sm:justify-end gap-1.5 order-3'>
-            Made with <Heart size={14} className='text-primary shrink-0' /> and coffee
+            Made with <Heart size={14} className='text-primary shrink-0' /> and coffee by{' '}
+            <a
+              href='https://crudengr.vercel.app/'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='hover:text-primary transition-colors underline underline-offset-2'
+            >
+              CRUD
+            </a>
           </p>
         </div>
       </div>
